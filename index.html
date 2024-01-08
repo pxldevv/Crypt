@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Decryptor</title>
+    <style>
+        textarea {
+            width: 100%;
+            height: 100px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Text Decryptor</h2>
+    <textarea id="encryptedText" placeholder="Enter normal text..."></textarea>
+    <button onclick="decryptText()">Encrypt</button>
+    <p id="decryptedResult"></p>
+
+    <script>
+        function decryptText() {
+            const decryptionMap = {
+                A: 50, B: 70, C: 20, D: 30, E: 800,
+                F: 330, G: 710, H: 220, I: 570, J: 280,
+                K: 310, L: 490, M: 980, N: 390, O: 450,
+                P: 360, Q: 520, R: 120, S: 770, T: 830,
+                U: 270, V: 380, W: 530, X: 290, Y: 880,
+                Z: 0, ' ': '.'
+            };
+
+            const encryptedText = document.getElementById('encryptedText').value.toUpperCase();
+            let decryptedResult = '';
+
+            for (let char of encryptedText) {
+                decryptedResult += decryptionMap[char] !== undefined ? decryptionMap[char] : char;
+            }
+
+            document.getElementById('decryptedResult').innerText = decryptedResult;
+        }
+    </script>
+
+</body>
+</html>
