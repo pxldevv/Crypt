@@ -1,45 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Text Decryptor</title>
-    <style>
-        textarea {
-            width: 100%;
-            height: 100px;
-            margin-bottom: 10px;
-        }
-    </style>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <h2>Text Decryptor</h2>
-    <textarea id="encryptedText" placeholder="Enter normal text..."></textarea>
-    <button onclick="decryptText()">Encrypt</button>
-    <p id="decryptedResult"></p>
+    <title>Proton</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="./css/styles.css" />
+    <script src="./js/scripts.js"></script>
+  </head>
+  <body>
+    <div id="bg-blob1" class="blob"></div>
+    <div id="bg-overlay"></div>
 
-    <script>
-        function decryptText() {
-            const decryptionMap = {
-                A: 50, B: 70, C: 20, D: 30, E: 800,
-                F: 330, G: 710, H: 220, I: 570, J: 280,
-                K: 310, L: 490, M: 980, N: 390, O: 450,
-                P: 360, Q: 520, R: 120, S: 770, T: 830,
-                U: 270, V: 380, W: 530, X: 290, Y: 880,
-                Z: 0, ' ': '.'
-            };
+    <div id="main">
+      <div
+        id="profile-card"
+        class="top-50 start-50 translate-middle text-center pt-4"
+      >
+        <img
+          id="logo"
+          class=""
+          src="./images/HypeV2Circle.png"
+          alt="Hype V2"
+          width="200px"
+        />
+        <h1>Crypt V2</h1>
 
-            const encryptedText = document.getElementById('encryptedText').value.toUpperCase();
-            let decryptedResult = '';
-
-            for (let char of encryptedText) {
-                decryptedResult += decryptionMap[char] !== undefined ? decryptionMap[char] : char;
-            }
-
-            document.getElementById('decryptedResult').innerText = decryptedResult;
-        }
-    </script>
-
-</body>
+        <div class="container">
+          <div class="form-floating">
+            <textarea
+              class="form-control"
+              placeholder="Insert Message"
+              id="message"
+              style="height: 100px"
+            ></textarea>
+            <label for="message">Insert Message:</label>
+            <br />
+            <button type="button" class="btn btn-primary" onclick="encodeTxt()">
+              Encrypt
+            </button>
+            <button
+              type="button"
+              class="btn btn-secondary"
+              onclick="decodeTxt()"
+            >
+              Decrypt
+            </button>
+            <br />
+            <br />
+          </div>
+          <div class="form-floating">
+            <textarea
+              class="form-control"
+              placeholder="Insert Message"
+              id="output"
+              style="height: 100px"
+              disabled
+            ></textarea>
+            <label for="output">Crypted Form:</label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
